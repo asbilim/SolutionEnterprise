@@ -13,21 +13,24 @@ SECRET_KEY = 'django-insecure-b7ct-#k=ea@y4+bji1lv@n&hlqblf&+4ns%$an6aoq36g9l*ww
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
+MEDIA_URL = '/solutionepi/media/'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'compressor',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'compressor',
     "django_browser_reload",
+    "cloudinary"
 ]
 
 MIDDLEWARE = [
@@ -45,7 +48,11 @@ COMPRESS_ROOT = BASE_DIR / 'shop/static'
 
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+STATIC_URL = 'static/'
+
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder','django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 
 
 ROOT_URLCONF = 'solution.urls'
@@ -76,7 +83,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'solutionepi',
+#     'USER': 'direction',
+#     'PASSWORD': 'P8hJAX0iosva',
+#     'HOST': 'ep-icy-haze-a3akfh6y.il-central-1.aws.neon.tech',
+#     'PORT': '5432',
+#     'OPTIONS': {'sslmode': 'require'},
+#   }
 }
 
 
@@ -120,3 +136,29 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+  "CLOUD_NAME" : "dihu8ypis", 
+  "API_KEY" : "972185422163339", 
+  "API_SECRET" : "pwYttPpmkyo0RHtA0bYZE_8Cvhk"
+}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'wednesday.mxrouting.net'
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'noreply@solutionepi.com'
+EMAIL_HOST_PASSWORD = '#Solutionepi2023'
+
+CORS_ORIGIN_WHITELIST = ["http://localhost:8000","http://127.0.0.1:8000","https://solutionepi.com","https://solutionepi.com"]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://solutionepi.com",
+    "https://solutionepi.com"
+]

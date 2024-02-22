@@ -1,0 +1,10 @@
+<div class=" w-full py-12">
+    <div class="grid grid-cols-1 w-full place-content-between sm:grid-cols-2  lg:grid-cols-3 gap-4 md:gap-8 lg:gap-12">
+        {% for product in products %}
+        {% include "shop/components/single_product.html" %}
+        {% endfor %}
+    </div>
+    <div class="text-center my-12 flex justify-end items-center">
+        <a href="#" class="text-orange-500 text-start underline text-2xl">See All</a>
+    </div>
+</div>

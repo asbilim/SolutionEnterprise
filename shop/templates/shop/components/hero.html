@@ -1,0 +1,66 @@
+{% extends "shop/layout/base.html" %}
+{% load static %}
+{% block hero %}
+<div class="overflow-hidden">
+    <div class="hero my-12 mt-24 w-full">
+        <img src="{% static 'shop/images/hero/hero.png' %}" class="w-full" alt="Hero Image" />
+    </div>
+    <div class="md:grid grid-cols-3 place-items-center justify-center max-h-[40rem] md:mx-28 mx-0 hidden gap-12">
+        <img src="{% static 'shop/images/hero/hero-item1.png' %}"
+            class="hero-image  aspect-square object-cover h-60 rounded-xl -translate-y-24" alt="Hero 1" />
+        <img src="{% static 'shop/images/hero/hero-item2.png' %}"
+            class="hero-image  aspect-square object-cover h-60 rounded-xl -translate-y-24" alt="Hero 2" />
+        <img src="{% static 'shop/images/hero/hero-item3.png' %}"
+            class="hero-image  aspect-square object-cover h-60 rounded-xl -translate-y-24" alt="Hero 3" />
+    </div>
+
+    <div class="swiper mySwiper md:hidden block my-8">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide max-h-72 w-full">
+                <img src="{% static 'shop/images/hero/hero-item1.png' %}" class="object-cover rounded-2xl w-full h-72"
+                    alt="Hero 1" />
+            </div>
+            <div class="swiper-slide max-h-52 w-full">
+                <img src="{% static 'shop/images/hero/hero-item2.png' %}" class="object-cover rounded-2xl w-full h-72"
+                    alt="Hero 2" />
+            </div>
+            <div class="swiper-slide max-h-52 w-full">
+                <img src="{% static 'shop/images/hero/hero-item3.png' %}" class="object-cover rounded-2xl w-full h-72"
+                    alt="Hero 3" />
+            </div>
+            <!-- Add more slides as needed -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="text flex flex-col md:flex-row items-start md:items-center gap-4 justify-between ">
+        <p class="md:text-4xl py-12 text-lg">We offer the best <span class="text-orange-400">security products</span>
+            for
+            you
+        </p>
+        <div class="icons flex gap-4">
+            <a href="#" class="cursor-pointer text-xl"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="cursor-pointer text-xl"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="cursor-pointer text-xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</div>
+
+{% block section_one %}
+{% endblock %}
+{% endblock %}
+{% block script %}
+<script>
+    var swiper = new Swiper('.mySwiper', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: false
+    });
+</script>
+
+{% endblock %}
