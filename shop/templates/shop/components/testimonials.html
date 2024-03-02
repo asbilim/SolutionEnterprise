@@ -1,0 +1,18 @@
+{% load static%}
+<div class="swiper testimonials block my-8 bg-[#FAA92C] rounded-2xl py-16 first-line:">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide max-h-72 w-full">
+            {% include "shop/components/single_testimonial.html" %}
+        </div>
+        <div class="swiper-slide max-h-72 w-full">
+            {% include "shop/components/single_testimonial.html" %}
+        </div>
+        <div class="swiper-slide max-h-72 w-full">
+            {% include "shop/components/single_testimonial.html" %}
+        </div>
+
+    </div>
+    <div class="pagination my-12">
+        <div class="swiper-pagination"></div>
+    </div>
+</div>

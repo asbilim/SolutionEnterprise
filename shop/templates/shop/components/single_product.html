@@ -1,0 +1,11 @@
+{% load static %}
+<div class="bg-white rounded-lg  ">
+    <img src="{{product.image.url}}" loading="lazy" alt="Helmet placeholder image"
+        class="h-[30rem] rounded-xl w-full object-cover object-center mb-6">
+    <div class="go flex items-center justify-between">
+        <h3 class="tracking-widest text-slate-500 md:text-lg text-xs font-medium title-font">{{product.name}}</h3>
+        <a href="#" class="text-slate-900 inline-flex items-center mt-3">
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
