@@ -11,4 +11,7 @@ def index(request):
 
 def shop(request):
     
-    return render(request,'shop/shop.html')
+    
+    all_products = Product.objects.all()
+    
+    return render(request,'shop/shop.html',{'products':all_products})
