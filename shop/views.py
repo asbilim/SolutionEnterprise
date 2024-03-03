@@ -15,3 +15,11 @@ def shop(request):
     all_products = Product.objects.all()
     
     return render(request,'shop/shop.html',{'products':all_products})
+
+
+def about(request):
+    
+    
+    all_products = Product.objects.all()
+    
+    return render(request,'shop/about.html',{'products':all_products})
