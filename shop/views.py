@@ -23,3 +23,11 @@ def about(request):
     all_products = Product.objects.all()
     
     return render(request,'shop/about.html',{'products':all_products})
+
+
+def contact(request):
+    
+    
+    all_products = Product.objects.all()
+    
+    return render(request,'shop/contact.html',{'products':all_products})

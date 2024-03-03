@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import index,shop,about
+from .views import index,shop
 
 urlpatterns = [
     path('',index,name="home-index-page"),
