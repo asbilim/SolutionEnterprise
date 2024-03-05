@@ -12,7 +12,7 @@
         Got a technical issue? Want to send feedback about a beta feature? Need
         details about our Business plan? Let us know.
       </p>
-      <form action="#" class="space-y-8">
+      <form action="#" class="space-y-8" method="POST">
         <div>
           <label for="email" class="block mb-2 text-sm font-medium text-sky-300"
             >Your email</label
@@ -24,6 +24,7 @@
             class="bg-gray-700 border border-gray-600 text-gray-200 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5"
             placeholder="name@flowbite.com"
             required
+            name="email"
           />
         </div>
         <div>
@@ -39,6 +40,7 @@
             class="bg-gray-700 border border-gray-600 text-gray-200 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-3"
             placeholder="Let us know how we can help you"
             required
+            name="subject"
           />
         </div>
         <div class="sm:col-span-2">
@@ -53,6 +55,7 @@
             rows="6"
             class="bg-gray-700 border border-gray-600 text-gray-200 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5"
             placeholder="Leave a comment..."
+            name="message"
           ></textarea>
         </div>
         <button
@@ -61,6 +64,7 @@
         >
           Send message
         </button>
+        {% csrf_token %}
       </form>
     </div>
   </section>

@@ -1,0 +1,62 @@
+{% extends "shop/layout/base.html" %} {% block content %}
+<body class="bg-black text-white">
+  <div class="container mx-auto p-4">
+    <div class="flex flex-wrap -mx-1 overflow-hidden">
+      <!-- Main Product Image -->
+      <img
+        src="{{product.image.url}}"
+        alt="Hooded Sweatshirt"
+        class="main-image my-1 px-1 w-full lg:w-4/5 object-center object-cover"
+      />
+
+      <!-- Smaller Images Below Main Image -->
+      <div
+        class="flex flex-wrap justify-center lg:justify-start w-full lg:w-1/5"
+      >
+        {% for item in product.gallery.all %}
+        <img
+          src="{{item.image.url}}"
+          alt="Product Image 1"
+          class="product-image-thumb my-1 px-1 object-cover object-center"
+        />
+        {% endfor %}
+      </div>
+    </div>
+    <div class="texts my-16 flex flex-col gap-4">
+      <div class="text-2xl font-bold">{{product.name}}</div>
+      <p class="text-lg leading-loose font-normal">{{product.description}}</p>
+      <form
+        class="form w-full max-w-2xl px-4 my-12 flex flex-col gap-4"
+        method="POST"
+      >
+        {% csrf_token %}
+        <fieldset class="flex flex-col gap-2">
+          <span>enter your phone number</span>
+          <input
+            required
+            type="text"
+            class="border border-[#ffa92c] py-2 leading-none outline-none hover:outline-none rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-[#faa]"
+            placeholder="enter your phone number"
+            name="phone_number"
+          />
+        </fieldset>
+        <fieldset class="flex flex-col gap-2">
+          <span>your email address</span>
+          <input
+            required
+            type="email"
+            class="border border-[#ffa92c] py-2 leading-none outline-none hover:outline-none rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-[#faa]"
+            placeholder="some@email.com"
+            name="email"
+          />
+        </fieldset>
+        <button
+          class="bg-[#faa92c] text-white font-bold text-xs leading-none py-4 px-12 rounded-xl my-4"
+        >
+          Request this product
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock %}

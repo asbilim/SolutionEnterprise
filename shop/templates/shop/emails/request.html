@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      .container {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 0 auto;
+        width: 80%;
+        max-width: 600px;
+      }
+      h2 {
+        color: #444;
+      }
+      .product-details {
+        margin-top: 20px;
+      }
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 0.9em;
+        text-align: center;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>New Product Request</h2>
+      <div class="product-details">
+        <p><strong>Product Name:</strong> {{ product.name }}</p>
+        <p><strong>Requester Email:</strong> {{ email }}</p>
+        <p><strong>Requester Phone Number:</strong> {{ phone_number }}</p>
+      </div>
+      <div>
+        <img
+          src="{{ product.image.url }}"
+          alt="Product Image"
+          class="product-image"
+        />
+      </div>
+      <div class="footer">
+        This is an automated message. Please do not reply directly to this
+        email.
+      </div>
+    </div>
+  </body>
+</html>
