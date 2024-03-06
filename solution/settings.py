@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b7ct-#k=ea@y4+bji1lv@n&hlqblf&+4ns%$an6aoq36g9l*ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -29,24 +29,57 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    "django_browser_reload",
+    # "django_browser_reload",
     "cloudinary"
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django_logs.log',
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 COMPRESS_ROOT = BASE_DIR / 'shop/static'
 
-COMPRESS_ENABLED = True
+STATIC_ROOT = BASE_DIR /'staticfiles'
+
+COMPRESS_ENABLED = False
 
 STATIC_URL = 'static/'
 
@@ -80,19 +113,19 @@ WSGI_APPLICATION = 'solution.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-#     'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'solutionepi',
-#     'USER': 'direction',
-#     'PASSWORD': 'P8hJAX0iosva',
-#     'HOST': 'ep-icy-haze-a3akfh6y.il-central-1.aws.neon.tech',
-#     'PORT': '5432',
-#     'OPTIONS': {'sslmode': 'require'},
-#   }
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'solutionepi',
+    'USER': 'direction',
+    'PASSWORD': 'P8hJAX0iosva',
+    'HOST': 'ep-icy-haze-a3akfh6y.il-central-1.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
 }
 
 
