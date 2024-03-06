@@ -7508,3 +7508,321 @@ Traceback (most recent call last):
     raise VariableDoesNotExist(
 django.template.base.VariableDoesNotExist: Failed lookup for key [dark_mode_theme] in {'raw': {'navbar_small_text': False, 'footer_small_text': False, 'body_small_text': False, 'brand_small_text': False, 'brand_colour': False, 'accent': 'accent-primary', 'navbar': 'navbar-white navbar-light', 'no_navbar_border': False, 'navbar_fixed': False, 'layout_boxed': False, 'footer_fixed': False, 'sidebar_fixed': False, 'sidebar': 'sidebar-dark-primary', 'sidebar_nav_small_text': False, 'sidebar_disable_expand': False, 'sidebar_nav_child_indent': False, 'sidebar_nav_compact_style': False, 'sidebar_nav_legacy_style': False, 'sidebar_nav_flat_style': False, 'theme': 'default', 'dark_mode_theme': None, 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}, 'theme': {'name': 'default', 'src': '/static/vendor/bootswatch/default/bootstrap.min.css'}, 'sidebar_classes': 'sidebar-dark-primary', 'navbar_classes': 'navbar-white navbar-light', 'body_classes': 'accent-primary theme-default', 'actions_classes': '', 'sidebar_list_classes': '', 'brand_classes': '', 'footer_classes': '', 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}
 INFO 2024-03-07 00:17:45,599 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3388
+INFO 2024-03-07 00:18:22,498 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+DEBUG 2024-03-07 00:18:24,873 base Exception while resolving variable 'dark_mode_theme' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [dark_mode_theme] in {'raw': {'navbar_small_text': False, 'footer_small_text': False, 'body_small_text': False, 'brand_small_text': False, 'brand_colour': False, 'accent': 'accent-primary', 'navbar': 'navbar-white navbar-light', 'no_navbar_border': False, 'navbar_fixed': False, 'layout_boxed': False, 'footer_fixed': False, 'sidebar_fixed': False, 'sidebar': 'sidebar-dark-primary', 'sidebar_nav_small_text': False, 'sidebar_disable_expand': False, 'sidebar_nav_child_indent': False, 'sidebar_nav_compact_style': False, 'sidebar_nav_legacy_style': False, 'sidebar_nav_flat_style': False, 'theme': 'default', 'dark_mode_theme': None, 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}, 'theme': {'name': 'default', 'src': '/static/vendor/bootswatch/default/bootstrap.min.css'}, 'sidebar_classes': 'sidebar-dark-primary', 'navbar_classes': 'navbar-white navbar-light', 'body_classes': 'accent-primary theme-default', 'actions_classes': '', 'sidebar_list_classes': '', 'brand_classes': '', 'footer_classes': '', 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}
+DEBUG 2024-03-07 00:18:24,875 base Exception while resolving variable 'dark_mode_theme' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [dark_mode_theme] in {'raw': {'navbar_small_text': False, 'footer_small_text': False, 'body_small_text': False, 'brand_small_text': False, 'brand_colour': False, 'accent': 'accent-primary', 'navbar': 'navbar-white navbar-light', 'no_navbar_border': False, 'navbar_fixed': False, 'layout_boxed': False, 'footer_fixed': False, 'sidebar_fixed': False, 'sidebar': 'sidebar-dark-primary', 'sidebar_nav_small_text': False, 'sidebar_disable_expand': False, 'sidebar_nav_child_indent': False, 'sidebar_nav_compact_style': False, 'sidebar_nav_legacy_style': False, 'sidebar_nav_flat_style': False, 'theme': 'default', 'dark_mode_theme': None, 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}, 'theme': {'name': 'default', 'src': '/static/vendor/bootswatch/default/bootstrap.min.css'}, 'sidebar_classes': 'sidebar-dark-primary', 'navbar_classes': 'navbar-white navbar-light', 'body_classes': 'accent-primary theme-default', 'actions_classes': '', 'sidebar_list_classes': '', 'brand_classes': '', 'footer_classes': '', 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}
+DEBUG 2024-03-07 00:18:25,468 base Exception while resolving variable 'custom' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [custom] in {'model': <class 'django.contrib.auth.models.Group'>, 'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True, 'view': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/', 'view_only': False, 'url': '/admin/auth/group/', 'model_str': 'auth.group', 'icon': 'fas fa-users'}
+DEBUG 2024-03-07 00:18:25,469 base Exception while resolving variable 'custom' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [custom] in {'model': <class 'django.contrib.auth.models.User'>, 'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True, 'view': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/', 'view_only': False, 'url': '/admin/auth/user/', 'model_str': 'auth.user', 'icon': 'fas fa-user'}
+DEBUG 2024-03-07 00:18:25,471 base Exception while resolving variable 'custom' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [custom] in {'model': <class 'shop.models.ImageGallery'>, 'name': 'Image gallerys', 'object_name': 'ImageGallery', 'perms': {'add': True, 'change': True, 'delete': True, 'view': True}, 'admin_url': '/admin/shop/imagegallery/', 'add_url': '/admin/shop/imagegallery/add/', 'view_only': False, 'url': '/admin/shop/imagegallery/', 'model_str': 'shop.imagegallery', 'icon': 'fas fa-circle'}
+DEBUG 2024-03-07 00:18:25,472 base Exception while resolving variable 'custom' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [custom] in {'model': <class 'shop.models.Product'>, 'name': 'Products', 'object_name': 'Product', 'perms': {'add': True, 'change': True, 'delete': True, 'view': True}, 'admin_url': '/admin/shop/product/', 'add_url': '/admin/shop/product/add/', 'view_only': False, 'url': '/admin/shop/product/', 'model_str': 'shop.product', 'icon': 'fas fa-circle'}
+DEBUG 2024-03-07 00:18:25,474 base Exception while resolving variable 'custom' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'custom'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [custom] in {'model': <class 'shop.models.Testimonial'>, 'name': 'Testimonials', 'object_name': 'Testimonial', 'perms': {'add': True, 'change': True, 'delete': True, 'view': True}, 'admin_url': '/admin/shop/testimonial/', 'add_url': '/admin/shop/testimonial/add/', 'view_only': False, 'url': '/admin/shop/testimonial/', 'model_str': 'shop.testimonial', 'icon': 'fas fa-circle'}
+INFO 2024-03-07 00:18:25,708 basehttp "GET /admin/ HTTP/1.1" 200 16586
+DEBUG 2024-03-07 00:18:25,711 autoreload File C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\conf\locale\en\__init__.py first seen with mtime 1709412427.3914826
+DEBUG 2024-03-07 00:18:25,728 autoreload File C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\tzdata\__init__.py first seen with mtime 1709412424.6674573
+DEBUG 2024-03-07 00:18:25,734 autoreload File C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\tzdata\zoneinfo\__init__.py first seen with mtime 1709412424.700875
+INFO 2024-03-07 00:18:25,739 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2024-03-07 00:18:25,740 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2024-03-07 00:18:25,740 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+INFO 2024-03-07 00:18:25,741 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 200 16969
+DEBUG 2024-03-07 00:18:25,741 autoreload File C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\conf\locale\en\formats.py first seen with mtime 1709412427.3929887
+INFO 2024-03-07 00:18:25,742 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 59344
+INFO 2024-03-07 00:18:25,749 basehttp "GET /static/vendor/adminlte/img/AdminLTELogo.png HTTP/1.1" 304 0
+INFO 2024-03-07 00:18:25,755 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2024-03-07 00:18:25,840 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 13276
+INFO 2024-03-07 00:18:25,881 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 200 2391
+DEBUG 2024-03-07 00:18:37,249 base Exception while resolving variable 'dark_mode_theme' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [dark_mode_theme] in {'raw': {'navbar_small_text': False, 'footer_small_text': False, 'body_small_text': False, 'brand_small_text': False, 'brand_colour': False, 'accent': 'accent-primary', 'navbar': 'navbar-white navbar-light', 'no_navbar_border': False, 'navbar_fixed': False, 'layout_boxed': False, 'footer_fixed': False, 'sidebar_fixed': False, 'sidebar': 'sidebar-dark-primary', 'sidebar_nav_small_text': False, 'sidebar_disable_expand': False, 'sidebar_nav_child_indent': False, 'sidebar_nav_compact_style': False, 'sidebar_nav_legacy_style': False, 'sidebar_nav_flat_style': False, 'theme': 'default', 'dark_mode_theme': None, 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}, 'theme': {'name': 'default', 'src': '/static/vendor/bootswatch/default/bootstrap.min.css'}, 'sidebar_classes': 'sidebar-dark-primary', 'navbar_classes': 'navbar-white navbar-light', 'body_classes': 'accent-primary theme-default', 'actions_classes': '', 'sidebar_list_classes': '', 'brand_classes': '', 'footer_classes': '', 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}
+DEBUG 2024-03-07 00:18:37,251 base Exception while resolving variable 'dark_mode_theme' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dark_mode_theme'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [dark_mode_theme] in {'raw': {'navbar_small_text': False, 'footer_small_text': False, 'body_small_text': False, 'brand_small_text': False, 'brand_colour': False, 'accent': 'accent-primary', 'navbar': 'navbar-white navbar-light', 'no_navbar_border': False, 'navbar_fixed': False, 'layout_boxed': False, 'footer_fixed': False, 'sidebar_fixed': False, 'sidebar': 'sidebar-dark-primary', 'sidebar_nav_small_text': False, 'sidebar_disable_expand': False, 'sidebar_nav_child_indent': False, 'sidebar_nav_compact_style': False, 'sidebar_nav_legacy_style': False, 'sidebar_nav_flat_style': False, 'theme': 'default', 'dark_mode_theme': None, 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}, 'theme': {'name': 'default', 'src': '/static/vendor/bootswatch/default/bootstrap.min.css'}, 'sidebar_classes': 'sidebar-dark-primary', 'navbar_classes': 'navbar-white navbar-light', 'body_classes': 'accent-primary theme-default', 'actions_classes': '', 'sidebar_list_classes': '', 'brand_classes': '', 'footer_classes': '', 'button_classes': {'primary': 'btn-primary', 'secondary': 'btn-secondary', 'info': 'btn-info', 'warning': 'btn-warning', 'danger': 'btn-danger', 'success': 'btn-success'}}
+DEBUG 2024-03-07 00:18:37,767 base Exception while resolving variable 'filter_input_length' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+TypeError: 'ModelAdmin' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ModelAdmin' object has no attribute 'filter_input_length'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'filter_input_length'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\bilim\Documents\backend\django\solution\env\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [filter_input_length] in <ModelAdmin: model=Product site=AdminSite(name='admin')>
+INFO 2024-03-07 00:18:37,775 basehttp "GET /admin/shop/product/ HTTP/1.1" 200 12479
+INFO 2024-03-07 00:18:37,815 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+INFO 2024-03-07 00:18:37,815 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2024-03-07 00:18:37,816 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 200 87533
+INFO 2024-03-07 00:18:37,817 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 200 163184
+INFO 2024-03-07 00:18:37,834 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2024-03-07 00:18:37,844 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9042
+INFO 2024-03-07 00:18:37,855 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8067
+INFO 2024-03-07 00:18:37,864 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2024-03-07 00:18:37,873 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2024-03-07 00:18:38,004 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+INFO 2024-03-07 00:18:38,015 basehttp "GET /static/jazzmin/js/change_list.js HTTP/1.1" 200 2252
+INFO 2024-03-07 00:18:39,885 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
