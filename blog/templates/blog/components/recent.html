@@ -1,0 +1,30 @@
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .circle-image {
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 0.25rem; /* Adjust the padding to match the border effect */
+        background: linear-gradient(90deg, rgba(255,221,153,1) 0%, rgba(255,221,153,1) 100%);
+    }
+    img.circle {
+        display: block;
+        border-radius: 50%;
+        width: 100%; /* Equal to height for a perfect circle */
+        height: auto;
+    }
+</style>
+<div class="max-w-screen-xl w-full p-6 bg-slate-800 text-slate-50 rounded-xl py-12">
+    <h2 class="text-2xl font-bold mb-6 text-start text-orange-500">Recently Viewed By People</h2>
+    <div class="flex justify-center space-x-4 flex-col md:grid grid-cols-3 gap-4">
+        {% for blog in blogs %}
+        <div class="text-center">
+            <div class="circle-image">
+                <img src="{{blog.image.url}}" alt="{{blog.title}}" class="circle object-cover ">
+            </div>
+            <p class="text-sm mt-2 underline">{{blog.title}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

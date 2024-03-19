@@ -1,0 +1,15 @@
+{% extends "shop/layout/base.html" %} {% load static %} {% block content %}
+    <div class="my-4">
+        {% include "blog/components/header.html" with cate=categories %}
+    </div>
+    {% include "shop/components/lined.html" with content="Our creative blog" %}
+    <div class="my-4">
+        {% include "blog/components/creative.html" with blogs=blogs %}
+    </div>
+    <div class="my-4">
+        {% include "blog/components/lifestyle.html" with blogs=reverse %}
+    </div>
+    <div class="my-4">
+        {% include "blog/components/recent.html" with blogs=recent %}
+    </div>
+{% endblock %}

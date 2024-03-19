@@ -1,14 +1,26 @@
 {% load compress %} {% load static %} {% load seo_generator %}
+{% load meta %}
 <!DOCTYPE html>
 <html>
   <head>
+    
+    {% include "meta/meta.html" %}
+    {{product.get_meta_title}}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Solution Enterprise" />
+    <meta name="description" content="Solution Enterprise , est une entreprise au cameroun spécialisé dans la livraison et l'accompagnement de produits pour votre entreprise." />
+    <meta name="" content="Solution Enterprise" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta name="Copyright" content="Solution Enterprise" />
+    <meta name="keywords" content="Cameroon , Solution Enterprise , Enterprise" />
+    <meta name="canonical" content="https://solutionepi.com" />
     <title>Solution Enterprise | produits disponible partout au cameroun</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link rel="stylesheet" href="{% static 'shop/src/output.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="{% static 'shop/styles/prose.css' %}">
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"

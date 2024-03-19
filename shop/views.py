@@ -25,6 +25,13 @@ def about(request):
     return render(request,'shop/about.html',{'products':all_products})
 
 
+def blog(request):
+    
+    
+
+    
+    return render(request,'shop/blog.html')
+
 def contact(request):
     
     
@@ -49,6 +56,7 @@ def contact(request):
 def product_detail(request,slug):
 
     product = Product.objects.get(slug=slug)
+    meta = product.as_meta()
 
     if request.method == 'POST':
 
@@ -62,4 +70,4 @@ def product_detail(request,slug):
         except Exception as e:
             print(e)
     
-    return render(request,'shop/product-detail.html',{'product':product})
+    return render(request,'shop/product-detail.html',{'product':product,'meta':meta})
