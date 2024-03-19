@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from meta.models import ModelMeta
 
 def send_html_email(subject,template_location, datas):
 
@@ -31,7 +32,7 @@ class ImageGallery(models.Model):
     def __str__(self):
         return self.name
     
-class Product(models.Model):
+class Product(models.Model,ModelMeta):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -45,6 +46,25 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+    _metadata = {
+        'title': 'name',
+        'description': 'description',
+        'image': 'get_absolute_image_url',
+        'og_type': 'article',  # OpenGraph type
+        'og_description': 'description',
+        'og_image': 'get_absolute_image_url',
+        'twitter_card': 'summary_large_image',  # Twitter card type
+        'twitter_site': '@solutionepi',  # Site's Twitter handle
+        'twitter_creator': '@solutionepi',  # Author's Twitter handle
+        'twitter_title': 'name',
+        'twitter_description': 'description',
+        'twitter_image': 'get_absolute_image_url',
+    }
+
+    def get_absolute_image_url(self):
+        if self.image:
+            return self.image.url  # Adjust accordingly if you're using a full UR
     
     def __str__(self):
         

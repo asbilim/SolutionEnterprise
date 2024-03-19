@@ -1,0 +1,17 @@
+<div class="w-full flex flex-col md:grid grid-cols-2  gap-4  overflow-hidden">
+    <div class="flex flex-col gap-4 ">
+        <img alt="" src="https://images.pexels.com/photos/18133772/pexels-photo-18133772/free-photo-of-a-heron-on-a-swamp.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="rounded-2xl object-cover max-h-[60vh]" />
+        <p class="text-3xl font-bold italic">we bring you <span class="text-orange-400">creative content</span> to life</p>
+    </div>
+    <div class="flex flex-col  overflow-hidden gap-4">
+        {% for cat in cate %}
+            <div class="flex bg-slate-800 p-4 rounded-xl gap-4 text-white flex-col md:flex-row">
+                <img alt="" src="{{cat.image.url}}" class="h-40 rounded-xl object-cover md:flex-grow" />
+                <div class="div flex flex-col">
+                    <h2 class="text-orange-400">{{cat.title}}</h2>
+                    <p class="">{{cat.description|truncatechars:200}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

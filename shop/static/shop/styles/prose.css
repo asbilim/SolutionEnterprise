@@ -1,0 +1,237 @@
+  /* Extending Base styles */
+.prose {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+  
+  /* Form elements styling */
+  .prose input, .prose textarea, .prose select {
+    font-family: inherit;
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding does not affect total width */
+  }
+  
+  .prose input[type="submit"], .prose button {
+    background-color: #f90; /* Orange theme color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .prose input[type="submit"]:hover, .prose button:hover {
+    background-color: #e80; /* Darker shade of orange for hover effect */
+  }
+  
+  /* Enhance link visibility & interaction */
+  .prose a, .prose a:visited {
+    color: #f60; /* Orange theme color */
+    text-decoration: underline; /* Enhance visibility */
+  }
+  
+  .prose a:hover, .prose a:focus {
+    color: #e80; /* Darker shade for hover/focus state */
+    text-decoration: none; /* Style preference */
+  }
+  
+  /* Responsive iframes, e.g., embedded videos */
+  .prose iframe {
+    max-width: 100%;
+    border: none; /* Remove default border */
+    margin-bottom: 1em; /* Consistent spacing */
+  }
+  
+  /* Styling lists for better readability */
+  .prose ul, .prose ol {
+    padding-left: 20px;
+    margin-bottom: 1em;
+  }
+  
+  .prose ul li, .prose ol li {
+    line-height: 1.6; /* Consistent with paragraph line height */
+  }
+  
+  /* Table styling for readability */
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+  }
+  
+  .prose th, .prose td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd; /* Light border for distinction */
+  }
+  
+  .prose th {
+    background-color: #f90; /* Orange theme for headers */
+    color: white;
+  }
+  
+  /* Base responsive settings */
+@media (max-width: 768px) {
+    .prose {
+      font-size: 14px; /* Smaller font size on mobile devices */
+    }
+  
+    .prose h1 {
+      font-size: 1.5em; /* Adjust heading sizes for mobile */
+    }
+  
+    .prose h2 {
+      font-size: 1.4em;
+    }
+  
+    /* Adjust margins and padding on smaller screens */
+    .prose ul, .prose ol, .prose p {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .prose {
+      font-size: 16px; /* Intermediate font size on tablets */
+    }
+  
+    /* Adjust layout and spacing for tablet devices */
+    .prose ul, .prose ol, .prose p {
+      margin-left: 1.5em;
+      margin-right: 1.5em;
+    }
+  }
+  
+
+  /* Button click animation */
+@keyframes clickEffect {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .prose button {
+    animation: clickEffect 0.2s ease;
+  }
+  
+  /* Link hover effect */
+  .prose a:hover {
+    animation: colorFade 0.3s ease forwards;
+  }
+  
+  @keyframes colorFade {
+    from { color: #f60; }
+    to { color: #e80; }
+  }
+  
+
+  /* Blockquote styling */
+.prose blockquote {
+    border-left: 4px solid #f90;
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    margin: 1em 0;
+    font-style: italic;
+  }
+  
+  /* Code block styling */
+  .prose code {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  
+  /* Headings styling */
+  .prose h1, .prose h2, .prose h3 {
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    color: #333;
+  }
+  
+  .prose h1 {
+    font-size: 2em;
+  }
+  
+  .prose h2 {
+    font-size: 1.5em;
+  }
+  
+  .prose h3 {
+    font-size: 1.17em;
+  }
+  
+
+  /* Custom List Markers for Unordered Lists */
+.prose ul.custom-marker {
+    list-style-type: none; /* Remove default markers */
+    padding-left: 0;
+  }
+  
+  .prose ul.custom-marker li {
+    position: relative; /* Needed for absolute positioning of the custom marker */
+    padding-left: 20px; /* Make space for the custom marker */
+  }
+  
+  .prose ul.custom-marker li::before {
+    content: '•'; /* Custom marker symbol */
+    color: #0275d8; /* Custom marker color */
+    font-size: 1.5em; /* Adjust size as needed */
+    position: absolute;
+    left: 0;
+    top: -0.2em; /* Adjust position as needed */
+  }
+  
+
+  /* Description Lists */
+.prose dl {
+    margin-bottom: 1rem;
+  }
+  
+  .prose dt {
+    font-weight: bold;
+  }
+  
+  .prose dd {
+    margin-bottom: 0.5rem;
+    margin-left: 1rem; /* Indent descriptions for better visual hierarchy */
+  }
+  
+
+  /* Unordered Lists */
+.prose ul {
+    list-style-type: disc; /* Use other styles like circle or square as preferred */
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Ordered Lists */
+  .prose ol {
+    list-style-type: decimal; /* Use other styles like lower-alpha or upper-roman as preferred */
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose ol li {
+    margin-bottom: 0.5rem;
+  }
+  
