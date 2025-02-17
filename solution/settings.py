@@ -1,5 +1,9 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +13,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b7ct-#k=ea@y4+bji1lv@n&hlqblf&+4ns%$an6aoq36g9l*ww'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'solutionepi.com',
+    '.solutionepi.com',  # Allows subdomains
+]
 
 MEDIA_URL = '/solutionepi/media/'
 
@@ -23,7 +32,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -34,39 +43,58 @@ INSTALLED_APPS = [
     'shop',
     'blog',
     # "django_browser_reload",
-    "cloudinary",
     "meta",
     'django_ckeditor_5',
+    'storages',
 ]
 
 
 
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'django_logs.log',
-#             'formatter': 'verbose',
-#         },
-#     },
-#     'formatters': {
-#         'verbose': {
-#             'format': '{levelname} {asctime} {module} {message}',
-#             'style': '{',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-#     },
-# }
+# Update the LOGGING configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '[{asctime}] {levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
+# Create logs directory if it doesn't exist
+if not os.path.exists(BASE_DIR / 'logs'):
+    os.makedirs(BASE_DIR / 'logs')
 
 
 MIDDLEWARE = [
@@ -126,18 +154,14 @@ WSGI_APPLICATION = 'solution.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        # 'OPTIONS': {'sslmode': 'require'},
     },
-    # 'default': {
-    # 'ENGINE': 'django.db.backends.postgresql',
-    # 'NAME': 'solutionepi',
-    # 'USER': 'direction',
-    # 'PASSWORD': 'P8hJAX0iosva',
-    # 'HOST': 'ep-icy-haze-a3akfh6y.il-central-1.aws.neon.tech',
-    # 'PORT': '5432',
-    # 'OPTIONS': {'sslmode': 'require'},
-#   }
 }
 
 
@@ -182,36 +206,55 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# R2 / S3 Settings
+AWS_ACCESS_KEY_ID = os.getenv('R2_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('R2_SECRET_ACCESS_KEY')
+AWS_S3_ENDPOINT_URL = os.getenv('R2_ENDPOINT_URL')
+AWS_STORAGE_BUCKET_NAME = os.getenv('R2_BUCKET_NAME')
+AWS_S3_REGION_NAME = "auto"
+AWS_S3_ADDRESSING_STYLE = "virtual"
 
-CKEDITOR_5_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+# SigV4 specific settings
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = True
 
-CLOUDINARY_STORAGE = {
-  "CLOUD_NAME" : "dihu8ypis", 
-  "API_KEY" : "972185422163339", 
-  "API_SECRET" : "pwYttPpmkyo0RHtA0bYZE_8Cvhk"
-}
+# Use R2 for media files
+DEFAULT_FILE_STORAGE = 'solution.storage_backends.MediaStorage'
 
+# Media configuration
+MEDIAFILES_LOCATION = 'store'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/'
+
+# URL expiration
+AWS_QUERYSTRING_EXPIRE = 3600  # URLs will expire in 1 hour
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'wednesday.mxrouting.net'
-EMAIL_PORT = 465 
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'noreply@solutionepi.com'
-EMAIL_HOST_PASSWORD = '#Solutionepi2023'
-DEFAULT_FROM_EMAIL = 'Solution Enterprise <noreply@solutionepi.com>'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'Solution Enterprise <{}>'.format(os.getenv('EMAIL_HOST_USER'))
 
 CORS_ORIGIN_WHITELIST = ["http://localhost:8000","http://127.0.0.1:8000","https://solutionepi.com","https://solutionepi.com"]
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "https://solutionepi.com",
-    "https://solutionepi.com"
+    'https://solutionepi.com',
+    'https://*.solutionepi.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
 ]
 
-
+# Add this for better security
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = False  # Set to True in production with SSL
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 
 customColorPalette = [
@@ -301,4 +344,38 @@ CKEDITOR_5_CONFIGS = {
         'reversed': 'true',
     }
 }
+}
+
+# Update the UNFOLD configuration
+UNFOLD = {
+    "SITE_TITLE": "Solution Enterprise",
+    "SITE_HEADER": "Solution Enterprise Admin",
+    "SITE_URL": "/",
+    "SITE_ICON": None,
+    
+    # Theme colors
+    "PRIMARY_COLOR": "#2563eb",
+    "SECONDARY_COLOR": "#4f46e5",
+    "ACCENT_COLOR": "#06b6d4",
+    "ERROR_COLOR": "#dc2626",
+    "SUCCESS_COLOR": "#16a34a",
+    "WARNING_COLOR": "#ca8a04",
+
+    # UI Customizations
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "SHOW_SEARCH": True,
+    "SHOW_BREADCRUMBS": True,
+    "SHOW_FOOTER": True,
+    "ENVIRONMENT": "production",
+    
+    # Custom CSS/JS
+    "STYLES": [],
+    "SCRIPTS": [],
+    
+    # Side Menu customization
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    }
 }

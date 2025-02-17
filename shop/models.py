@@ -4,13 +4,15 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from meta.models import ModelMeta
+import os
+from django.utils import timezone
+from solution.storage_backends import MediaStorage
 
-def send_html_email(subject,template_location, datas):
-
+def send_html_email(subject, template_location, datas):
     html_message = render_to_string(template_location, datas)
     plain_message = strip_tags(html_message)
-    from_email = "noreply@solutionepi.com"
-    to = "bilimdepaullilian@gmail.com"
+    from_email = os.getenv('EMAIL_HOST_USER')
+    to = "contact@solutionepi.com"  # Consider moving this to settings or env
 
     send_mail(
         subject,
@@ -18,16 +20,16 @@ def send_html_email(subject,template_location, datas):
         from_email,
         [to],
         html_message=html_message,
-        auth_user="noreply@solutionepi.com",
-        auth_password="wgjM0AkK?lacho",
-        connection=None,
     )
     
 
 class ImageGallery(models.Model):
 
     name = models.CharField(max_length=255)
-    image= models.ImageField(upload_to="lachoshop/images/products/gallery/")
+    image = models.ImageField(
+        upload_to="gallery/",
+        storage=MediaStorage()
+    )
 
     def __str__(self):
         return self.name
@@ -36,7 +38,10 @@ class Product(models.Model,ModelMeta):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to="lachoshop/images/products/")
+    image = models.ImageField(
+        upload_to="products/",
+        storage=MediaStorage()
+    )
     quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
@@ -78,8 +83,7 @@ class Testimonial(models.Model):
     position = models.CharField(max_length=255)
     
     def __str__(self):
-        
-        return f"{self.name} from {self.position}"
+        return f"{self.author} from {self.position}"
     
 
 class Contact(models.Model):
@@ -87,6 +91,7 @@ class Contact(models.Model):
     subject = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
 
@@ -99,7 +104,6 @@ class Contact(models.Model):
             "shop/emails/contact.html",
             {
                 "email": self.email,
-                "email": self.email,
                 "message": self.message,
             },
         )
@@ -111,6 +115,8 @@ class Request(models.Model):
     phone_number = models.CharField(max_length=255)
     email = models.EmailField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
 
         return self.email
